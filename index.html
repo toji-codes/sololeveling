@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Khang's Solo Leveling</title>
+    
+    <!-- Apple Web App Meta Tags für den Home-Bildschirm -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Solo Leveling">
+    
+    <!-- Das neue, integrierte Home-Bildschirm Icon (Base64 SVG) -->
+    <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiI+CiAgICA8ZGVmcz4KICAgICAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnR3JhZCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgICAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwNjA3MGQiIC8+CiAgICAgICAgICAgIDxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjMGYxMDFhIiAvPgogICAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMxNDE1MjQiIC8+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgICAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImFjY2VudEdyYWQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjOGI1Y2Y2IiAvPgogICAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMGYwZmYiIC8+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgICAgICA8ZmlsdGVyIGlkPSJnbG93IiB4PSItMjAlIiB5PSItMjAlIiB3aWR0aD0iMTQwJSIgaGVpZ2h0PSIxNDAlIj4KICAgICAgICAgICAgPGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0iMTIiIHJlc3VsdD0iYmx1ciIgLz4KICAgICAgICAgICAgPGZlQ29tcG9zaXRlIGluPSJTb3VyY2VHcmFwaGljIiBpbjI9ImJsdXIiIG9wZXJhdG9yPSJvdmVyIiAvPgogICAgICAgIDwvZmlsdGVyPgogICAgPC9kZWZzPgog_CiAgICA8cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9IjExMiIgZmlsbD0idXJsKCNiZ0dyYWQpIi8+CiAgICAKICAgIDxyZWN0IHg9IjE1IiB5PSIxNSIgd2lkdGg9IjQ4MiIgaGVpZ2h0PSI0ODIiIHJ4PSI5NyIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMmMxYTRkIiBzdHJva2Utd2lkdGg9IjQiIG9wYWNpdHk9IjAuNiIvPgogICAgCiAgICA8cGF0aCBkPSJNMTkwIDE0MCBMMTkwIDM3MiBNMTkwIDI1NiBMMzMwIDE0MCBNMjEwIDI3MCBMMzQwIDM3MiIKICAgICAgICAgc3Ryb2tlPSIjOGI1Y2Y2IiBzdHJva2Utd2lkdGg9IjQyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIAogICAgICAgICBvcGFjaXR5PSIwLjMiIGZpbHRlcj0idXJsKCNnbG93KSIvPgogCiAgICA8cGF0aCBkPSJNMTkwIDEzMCBMMTkwIDM4MiBNMTkwIDI1NiBMMzQwIDEzMCBNMjEwIDI3MiBMMzUwIDM4MiIKICAgICAgICAgc3Ryb2tlPSJ1cmwoI2FjY2VudEdyYWQpIiBzdHJva2Utd2lkdGg9IjM2IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIC8+CiAgICAgICAgIAogICAgPHBhdGggZD0iTTMyMCAxMDAgTDM2MCAxMDAgTDM2MCAxNDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwZjBmZiIgc3Ryb2tlLXdpZHRoPSI4IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+">
+
     <style>
         :root {
             --bg-color: #06070d;
@@ -112,7 +121,6 @@
 
         <form id="task-form">
             <div class="task-list">
-                <!-- SORTIERT NACH EFFIZIENZ & CONVENIENCE -->
                 <label class="task-item">
                     <input type="checkbox" id="check-0" onchange="checkProgress()">
                     <span>💪 80 Liegestütze</span>
@@ -195,7 +203,7 @@
     ];
 
     window.onload = function() {
-        const saved = localStorage.getItem('khangs_solo_v13');
+        const saved = localStorage.getItem('khangs_solo_v14_icon');
         if (saved) { 
             try { appState = JSON.parse(saved); } catch(e) { console.error("Reset ausgeführt."); }
         }
@@ -203,7 +211,6 @@
         checkDayTransition();
         updateUI();
         
-        // Starte den 24h Echtzeit-Countdown
         setInterval(updateTimer, 1000);
         updateTimer();
     };
@@ -213,7 +220,6 @@
         document.getElementById('current-date').innerText = new Date().toLocaleDateString('de-DE', { weekday: 'long', day: 'numeric', month: 'short' });
 
         if (appState.lastTrackedDate !== today) {
-            // Wenn ein neuer Tag anbricht und der alte nicht aktiv beendet wurde -> Strafe kassieren
             if (appState.dayStatus === "active" && appState.lastTrackedDate !== "") {
                 appState.score -= 150;
                 appState.penaltyChecked = false; 
@@ -221,18 +227,17 @@
             appState.lastTrackedDate = today;
             appState.dayStatus = "active";
             resetQuestCheckboxes();
-            localStorage.setItem('khangs_solo_v13', JSON.stringify(appState));
+            localStorage.setItem('khangs_solo_v14_icon', JSON.stringify(appState));
         }
     }
 
     function updateTimer() {
         const now = new Date();
         const midnight = new Date();
-        midnight.setHours(24, 0, 0, 0); // Exakt 00:00 Uhr der nächsten Nacht
+        midnight.setHours(24, 0, 0, 0);
 
         const diff = midnight - now;
 
-        // Falls die Zeit abgelaufen ist (während die App offen ist), Tag-Wechsel triggern
         if (diff <= 0) {
             checkDayTransition();
             updateUI();
@@ -285,7 +290,7 @@
         if (appState.dayStatus === 'active') {
             appState.score += 100;
             appState.dayStatus = 'completed';
-            localStorage.setItem('khangs_solo_v13', JSON.stringify(appState));
+            localStorage.setItem('khangs_solo_v14_icon', JSON.stringify(appState));
             updateUI();
         }
     }
@@ -339,7 +344,7 @@
     function togglePenaltyCheck() {
         const cb = document.getElementById('penalty-check');
         appState.penaltyChecked = cb.checked;
-        localStorage.setItem('khangs_solo_v13', JSON.stringify(appState));
+        localStorage.setItem('khangs_solo_v14_icon', JSON.stringify(appState));
         checkProgress();
     }
 </script>
