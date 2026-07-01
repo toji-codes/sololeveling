@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Khang's Solo Leveling</title>
+    <style>
+        :root {
+            --bg-color: #06070d;
+            --card-bg: #0f111a;
+            --border-color: #2c1a4d;
+            --accent-purple: #8b5cf6;
+            --accent-purple-glow: rgba(139, 92, 246, 0.4);
+            --accent-blue: #00f0ff;
+            --accent-red: #ff2a5f;
+            --text-main: #f3f4f6;
+            --text-muted: #6b7280;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+        body {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-color);
+            background-image: radial-gradient(at 0% 0%, rgba(31, 24, 66, 0.3) 0, transparent 50%);
+            color: var(--text-main);
+            padding: 15px 10px;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container { width: 100%; max-width: 480px; display: flex; flex-direction: column; gap: 20px; }
+        
+        .card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 22px;
+            border: 2px solid var(--border-color);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent-purple), var(--accent-blue), transparent);
+        }
+
+        h1 { font-size: 1.8rem; text-align: center; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; text-shadow: 0 0 10px var(--accent-purple-glow); }
+        h2 { font-size: 1.15rem; margin-bottom: 15px; color: var(--accent-blue); text-transform: uppercase; letter-spacing: 1px; }
+        
+        .header-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
+        .date-sub { color: var(--accent-purple); letter-spacing: 2px; }
+        .timer-sub { color: var(--accent-red); font-family: monospace; }
+
+        .scoreboard { text-align: center; padding: 16px; background: #141524; border-radius: 6px; border: 1px solid rgba(139, 92, 246, 0.3); }
+        .score-val { font-size: 3.2rem; font-weight: 900; color: var(--accent-blue); font-family: monospace; text-shadow: 0 0 12px rgba(0, 240, 255, 0.6); }
+        .score-val.neg { color: var(--accent-red); text-shadow: 0 0 12px rgba(255, 42, 95, 0.6); }
+
+        .penalty-tracker {
+            background: rgba(255, 42, 95, 0.1); border: 1px solid rgba(255, 42, 95, 0.3);
+            border-radius: 6px; padding: 12px; margin-top: 15px; text-align: center; font-size: 0.9rem;
+        }
+        .penalty-tracker span { color: var(--accent-red); font-weight: bold; }
+
+        .task-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 18px; }
+        .task-item {
+            background: #141724; padding: 14px 16px; border-radius: 6px;
+            border: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; gap: 12px;
+            cursor: pointer; user-select: none; transition: background 0.2s;
+        }
+        .task-item:hover { background: #1a1d2e; }
+        .task-item input[type="checkbox"] {
+            width: 20px; height: 20px; accent-color: var(--accent-blue); cursor: pointer;
+        }
+        .task-item span { font-size: 0.95rem; font-weight: 600; flex-grow: 1; }
+
+        .action-btn {
+            width: 100%; padding: 18px; border-radius: 6px; border: 1px solid var(--accent-purple);
+            background: linear-gradient(135deg, #4c1d95, #7c3aed); color: white; font-size: 1.05rem;
+            font-weight: 800; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; transition: all 0.2s;
+        }
+        .action-btn:disabled { background: #1c1d26; border-color: #2a2b36; color: var(--text-muted); cursor: not-allowed; }
+
+        .table-wrapper { overflow-x: auto; margin-top: 10px; max-height: 420px; border: 1px solid rgba(255,255,255,0.05); border-radius: 4px; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.85rem; text-align: left; }
+        th, td { padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); vertical-align: middle; }
+        th { color: var(--accent-red); background: #0b0d14; text-transform: uppercase; font-size: 0.72rem; letter-spacing: 1px; }
+        td { background: #11131f; }
+
+        .penalty-row-active { background: rgba(255, 42, 95, 0.15) !important; font-weight: bold; color: var(--accent-red); }
+        .penalty-cb { width: 18px; height: 18px; accent-color: var(--accent-red); cursor: pointer; }
+        .status-cell { text-align: center; width: 50px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- QUEST CARD -->
+    <div class="card">
+        <div class="header-meta">
+            <div class="date-sub" id="current-date">-</div>
+            <div class="timer-sub" id="24h-timer">Zeit übrig: 00:00:00</div>
+        </div>
+        <h1>Khang's Solo Leveling</h1>
+        <br>
+        <div class="scoreboard">
+            <div style="font-size: 0.7rem; color: var(--accent-purple); text-transform: uppercase; letter-spacing: 2px;">Aktueller Score</div>
+            <div class="score-val" id="score-display">0</div>
+        </div>
+        <br>
+
+        <form id="task-form">
+            <div class="task-list">
+                <!-- SORTIERT NACH EFFIZIENZ & CONVENIENCE -->
+                <label class="task-item">
+                    <input type="checkbox" id="check-0" onchange="checkProgress()">
+                    <span>💪 80 Liegestütze</span>
+                </label>
+                <label class="task-item">
+                    <input type="checkbox" id="check-1" onchange="checkProgress()">
+                    <span>🦵 100 Kniebeugen</span>
+                </label>
+                <label class="task-item">
+                    <input type="checkbox" id="check-2" onchange="checkProgress()">
+                    <span>🧱 60 Sit-Ups</span>
+                </label>
+                <label class="task-item">
+                    <input type="checkbox" id="check-3" onchange="checkProgress()">
+                    <span>🏋️‍♂️ 40 Klimmzüge</span>
+                </label>
+                <label class="task-item">
+                    <input type="checkbox" id="check-4" onchange="checkProgress()">
+                    <span>🏃‍♂️ 3 km laufen</span>
+                </label>
+            </div>
+            
+            <button type="button" class="action-btn" id="submit-btn" onclick="completeDay()" disabled>Quest absenden (+100 XP)</button>
+        </form>
+
+        <div class="penalty-tracker" id="current-penalty-display">
+            Nächste Strafstufe: <span>Keine (Sicherer Bereich)</span>
+        </div>
+    </div>
+
+    <!-- STRAFSTUFEN CARD -->
+    <div class="card">
+        <h2>🚨 Strafstufen</h2>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Stufe</th>
+                        <th>Bedingung</th>
+                        <th>Strafe</th>
+                        <th style="text-align: center;">Erledigt</th>
+                    </tr>
+                </thead>
+                <tbody id="penalty-table-body">
+                    <tr id="p-row-1"><td>Stufe 1</td><td>&lt; 0 KP</td><td>100 Burpees Zusatz</td><td class="status-cell" id="p-cell-1">-</td></tr>
+                    <tr id="p-row-2"><td>Stufe 2</td><td>&lt; -150 KP</td><td>Kaltduschen Pflicht (3 Tage)</td><td class="status-cell" id="p-cell-2">-</td></tr>
+                    <tr id="p-row-3"><td>Stufe 3</td><td>&lt; -300 KP</td><td>Social Media Sperre (24h)</td><td class="status-cell" id="p-cell-3">-</td></tr>
+                    <tr id="p-row-4"><td>Stufe 4</td><td>&lt; -500 KP</td><td>Metcon Workout Extra</td><td class="status-cell" id="p-cell-4">-</td></tr>
+                    <tr id="p-row-5"><td>Stufe 5</td><td>&lt; -700 KP</td><td>Intervallfasten 16/8 (3 Tage)</td><td class="status-cell" id="p-cell-5">-</td></tr>
+                    <tr id="p-row-6"><td>Stufe 6</td><td>&lt; -900 KP</td><td>Kaltduschen (7 Tage) + 50 Burpees/Tag</td><td class="status-cell" id="p-cell-6">-</td></tr>
+                    <tr id="p-row-7"><td>Stufe 7</td><td>&lt; -1200 KP</td><td>Social Media Sperre (3 Tage)</td><td class="status-cell" id="p-cell-7">-</td></tr>
+                    <tr id="p-row-8"><td>Stufe 8</td><td>&lt; -1500 KP</td><td>Double Workout Day (Kraft + Ausdauer)</td><td class="status-cell" id="p-cell-8">-</td></tr>
+                    <tr id="p-row-9"><td>Stufe 9</td><td>&lt; -2000 KP</td><td>Vollständiges Fasten (24h)</td><td class="status-cell" id="p-cell-9">-</td></tr>
+                    <tr id="p-row-10"><td>Stufe 10</td><td>&lt; -2500 KP</td><td>48h Fasten + 7 Tage Social Media Bann</td><td class="status-cell" id="p-cell-10">-</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    let appState = {
+        score: 0, 
+        lastTrackedDate: "", 
+        dayStatus: "active",
+        penaltyChecked: false
+    };
+
+    const penaltyThresholds = [
+        { level: 10, limit: -2500, text: "Stufe 10: 48h Fasten & 7 Tage Social Media Bann" },
+        { level: 9, limit: -2000, text: "Stufe 9: 24h Fasten" },
+        { level: 8, limit: -1500, text: "Stufe 8: Double Workout Day" },
+        { level: 7, limit: -1200, text: "Stufe 7: 3 Tage Social Media Sperre" },
+        { level: 6, limit: -900, text: "Stufe 6: 7 Tage Kaltduschen & Burpees" },
+        { level: 5, limit: -700, text: "Stufe 5: 3 Tage Intervallfasten" },
+        { level: 4, limit: -500, text: "Stufe 4: Metcon Workout Extra" },
+        { level: 3, limit: -300, text: "Stufe 3: 24h Social Media Sperre" },
+        { level: 2, limit: -150, text: "Stufe 2: 3 Tage Kaltduschen" },
+        { level: 1, limit: 0, text: "Stufe 1: 100 Burpees" }
+    ];
+
+    window.onload = function() {
+        const saved = localStorage.getItem('khangs_solo_v13');
+        if (saved) { 
+            try { appState = JSON.parse(saved); } catch(e) { console.error("Reset ausgeführt."); }
+        }
+        
+        checkDayTransition();
+        updateUI();
+        
+        // Starte den 24h Echtzeit-Countdown
+        setInterval(updateTimer, 1000);
+        updateTimer();
+    };
+
+    function checkDayTransition() {
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('current-date').innerText = new Date().toLocaleDateString('de-DE', { weekday: 'long', day: 'numeric', month: 'short' });
+
+        if (appState.lastTrackedDate !== today) {
+            // Wenn ein neuer Tag anbricht und der alte nicht aktiv beendet wurde -> Strafe kassieren
+            if (appState.dayStatus === "active" && appState.lastTrackedDate !== "") {
+                appState.score -= 150;
+                appState.penaltyChecked = false; 
+            }
+            appState.lastTrackedDate = today;
+            appState.dayStatus = "active";
+            resetQuestCheckboxes();
+            localStorage.setItem('khangs_solo_v13', JSON.stringify(appState));
+        }
+    }
+
+    function updateTimer() {
+        const now = new Date();
+        const midnight = new Date();
+        midnight.setHours(24, 0, 0, 0); // Exakt 00:00 Uhr der nächsten Nacht
+
+        const diff = midnight - now;
+
+        // Falls die Zeit abgelaufen ist (während die App offen ist), Tag-Wechsel triggern
+        if (diff <= 0) {
+            checkDayTransition();
+            updateUI();
+            return;
+        }
+
+        const hours = Math.floor(diff / (1000 * 60 * 60)).toString().padStart(2, '0');
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000).toString().padStart(2, '0');
+
+        document.getElementById('24h-timer').innerText = `Zeit übrig: ${hours}:${minutes}:${seconds}`;
+    }
+
+    function resetQuestCheckboxes() {
+        for (let i = 0; i < 5; i++) {
+            document.getElementById(`check-${i}`).checked = false;
+        }
+    }
+
+    function checkProgress() {
+        const btn = document.getElementById('submit-btn');
+        let allQuestsDone = true;
+        for (let i = 0; i < 5; i++) {
+            if (!document.getElementById(`check-${i}`).checked) allQuestsDone = false;
+        }
+
+        let activeLevel = 0;
+        for (let t of penaltyThresholds) {
+            if (appState.score < t.limit) { activeLevel = t.level; break; }
+        }
+
+        if (appState.dayStatus === 'completed') {
+            btn.disabled = true;
+            btn.innerText = "Quest Gelöst! 🎉";
+        } else {
+            if (allQuestsDone && (activeLevel === 0 || appState.penaltyChecked)) {
+                btn.disabled = false;
+                btn.innerText = "Quest absenden (+100 XP)";
+            } else if (allQuestsDone && activeLevel > 0 && !appState.penaltyChecked) {
+                btn.disabled = true;
+                btn.innerText = "⚠️ Erledige erst deine Strafe!";
+            } else {
+                btn.disabled = true;
+                btn.innerText = "Hake alle Übungen ab!";
+            }
+        }
+    }
+
+    function completeDay() {
+        if (appState.dayStatus === 'active') {
+            appState.score += 100;
+            appState.dayStatus = 'completed';
+            localStorage.setItem('khangs_solo_v13', JSON.stringify(appState));
+            updateUI();
+        }
+    }
+
+    function updateUI() {
+        const scoreDisp = document.getElementById('score-display');
+        scoreDisp.innerText = appState.score;
+        appState.score < 0 ? scoreDisp.classList.add('neg') : scoreDisp.classList.remove('neg');
+
+        updatePenaltyDisplays();
+        checkProgress();
+    }
+
+    function updatePenaltyDisplays() {
+        const penaltyTextSpan = document.querySelector('#current-penalty-display span');
+        let activeLevel = 0;
+        let nextPenaltyText = "Keine (Sicherer Bereich)";
+
+        for (let t of penaltyThresholds) {
+            if (appState.score < t.limit) {
+                activeLevel = t.level;
+                break;
+            }
+        }
+
+        if (activeLevel > 0) {
+            const currentActive = penaltyThresholds.find(t => t.level === activeLevel);
+            nextPenaltyText = `AKTIV: ${currentActive.text}`;
+            document.getElementById('current-penalty-display').style.background = "rgba(255, 42, 95, 0.25)";
+        } else {
+            nextPenaltyText = "Droht bei < 0 KP: Stufe 1 (100 Burpees)";
+            document.getElementById('current-penalty-display').style.background = "rgba(139, 92, 246, 0.1)";
+            appState.penaltyChecked = false; 
+        }
+        penaltyTextSpan.innerText = nextPenaltyText;
+
+        for (let i = 1; i <= 10; i++) {
+            const row = document.getElementById(`p-row-${i}`);
+            const cell = document.getElementById(`p-cell-${i}`);
+            row.className = "";
+            
+            if (i === activeLevel) {
+                row.className = "penalty-row-active";
+                cell.innerHTML = `<input type="checkbox" class="penalty-cb" id="penalty-check" ${appState.penaltyChecked ? 'checked' : ''} onchange="togglePenaltyCheck()">`;
+            } else {
+                cell.innerText = "-";
+            }
+        }
+    }
+
+    function togglePenaltyCheck() {
+        const cb = document.getElementById('penalty-check');
+        appState.penaltyChecked = cb.checked;
+        localStorage.setItem('khangs_solo_v13', JSON.stringify(appState));
+        checkProgress();
+    }
+</script>
+</body>
+</html>
