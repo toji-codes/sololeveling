@@ -9,7 +9,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Solo Leveling">
     
-    <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiI+CiAgICA8ZGVmcz4KICAgICAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnR3JhZCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgICAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwNjA3MGQiIC8+CiAgICAgICAgICAgIDxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjMGYxMDFhIiAvPgogICAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMxNDE1MjQiIC8+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgICAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImFjY2VudEdyYWQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICAgICAgICA8c3RvcCBvZmZzZXQ0PSIwJSIgc3RvcC1jb2xvcj0iIzhiNWNmNiIgLz4KICAgICAgICAgICAg... (Rest des Icons)">
+    <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5MTIgNTEyIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiI+CiAgICA8ZGVmcz4KICAgICAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnR3JhZCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgICAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwNjA3MGQiIC8+CiAgICAgICAgICAgIDxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjMGYxMDFhIiAvPgogICAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMxNDE1MjQiIC8+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgICAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImFjY2VudEdyYWQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjOGI1Y2Y2IiAvPgogICAgICAgICAgICA8... (Rest des Icons)">
 
     <style>
         :root {
@@ -124,38 +124,6 @@
             <div class="score-val" id="score-display">0</div>
         </div>
 
-        <!-- STRECHING CHECKLISTE -->
-        <div class="section-block" id="stretching-block">
-            <h2>Stretching (Wert: +50 XP)</h2>
-            <div class="task-list">
-                <label class="task-item" id="stretch-item-0">
-                    <input type="checkbox" id="stretch-check-0" onchange="toggleStretchCheck(0)">
-                    <span>2min Toe Stretch</span>
-                </label>
-                <label class="task-item" id="stretch-item-1">
-                    <input type="checkbox" id="stretch-check-1" onchange="toggleStretchCheck(1)">
-                    <span>2min Deep Squat</span>
-                </label>
-                <label class="task-item" id="stretch-item-2">
-                    <input type="checkbox" id="stretch-check-2" onchange="toggleStretchCheck(2)">
-                    <span>2min Sciatica Flossing</span>
-                </label>
-                <label class="task-item" id="stretch-item-3">
-                    <input type="checkbox" id="stretch-check-3" onchange="toggleStretchCheck(3)">
-                    <span>2min per side Hip Flexor Stretch</span>
-                </label>
-                <label class="task-item" id="stretch-item-4">
-                    <input type="checkbox" id="stretch-check-4" onchange="toggleStretchCheck(4)">
-                    <span>2min per side Cossack Squat</span>
-                </label>
-                <label class="task-item" id="stretch-item-5">
-                    <input type="checkbox" id="stretch-check-5" onchange="toggleStretchCheck(5)">
-                    <span>2min Chest Stretch</span>
-                </label>
-            </div>
-            <button type="button" class="action-btn" id="stretch-btn" onclick="completeStretching()" disabled>Stretching einreichen</button>
-        </div>
-
         <!-- ÜBUNGEN CHECKLISTE -->
         <div class="section-block" id="exercises-block">
             <h2>Übungen (Wert: +100 XP)</h2>
@@ -170,18 +138,58 @@
                 </label>
                 <label class="task-item" id="ex-item-2">
                     <input type="checkbox" id="ex-check-2" onchange="toggleExCheck(2)">
-                    <span>2x10 SL Glute Bridges</span>
+                    <span>20 Cat Cow</span>
                 </label>
                 <label class="task-item" id="ex-item-3">
                     <input type="checkbox" id="ex-check-3" onchange="toggleExCheck(3)">
-                    <span>20 Clam Shells</span>
+                    <span>2x10 SL Glute Bridges</span>
                 </label>
                 <label class="task-item" id="ex-item-4">
                     <input type="checkbox" id="ex-check-4" onchange="toggleExCheck(4)">
-                    <span>20 Cat-Cow</span>
+                    <span>20 Clam Shells</span>
+                </label>
+                <label class="task-item" id="ex-item-5">
+                    <input type="checkbox" id="ex-check-5" onchange="toggleExCheck(5)">
+                    <span>10x50sec Isometric Rot. Cuff Hold</span>
                 </label>
             </div>
-            <button type="button" class="action-btn" id="exercises-btn" onclick="completeExercises()" disabled>Quest final absenden</button>
+            <button type="button" class="action-btn" id="exercises-btn" onclick="completeExercises()" disabled>Übungen einreichen</button>
+        </div>
+
+        <!-- STRETCHING CHECKLISTE -->
+        <div class="section-block" id="stretching-block">
+            <h2>Stretching (Wert: +50 XP)</h2>
+            <div class="task-list">
+                <label class="task-item" id="stretch-item-0">
+                    <input type="checkbox" id="stretch-check-0" onchange="toggleStretchCheck(0)">
+                    <span>2min Toe + Wrist Stretch</span>
+                </label>
+                <label class="task-item" id="stretch-item-1">
+                    <input type="checkbox" id="stretch-check-1" onchange="toggleStretchCheck(1)">
+                    <span>2min Deep Squat</span>
+                </label>
+                <label class="task-item" id="stretch-item-2">
+                    <input type="checkbox" id="stretch-check-2" onchange="toggleStretchCheck(2)">
+                    <span>2x2min per Side Cossack Squat</span>
+                </label>
+                <label class="task-item" id="stretch-item-3">
+                    <input type="checkbox" id="stretch-check-3" onchange="toggleStretchCheck(3)">
+                    <span>2min Sciatica Flossing</span>
+                </label>
+                <label class="task-item" id="stretch-item-4">
+                    <input type="checkbox" id="stretch-check-4" onchange="toggleStretchCheck(4)">
+                    <span>2x2min Pigeon Pose</span>
+                </label>
+                <label class="task-item" id="stretch-item-5">
+                    <input type="checkbox" id="stretch-check-5" onchange="toggleStretchCheck(5)">
+                    <span>2x2min per Hip Flexor Stretch</span>
+                </label>
+                <label class="task-item" id="stretch-item-6">
+                    <input type="checkbox" id="stretch-check-6" onchange="toggleStretchCheck(6)">
+                    <span>2x2min Pec Minor Stretch</span>
+                </label>
+            </div>
+            <button type="button" class="action-btn" id="stretch-btn" onclick="completeStretching()" disabled>Quest final absenden</button>
         </div>
 
         <div class="penalty-tracker" id="current-penalty-display">
@@ -226,12 +234,12 @@
     let appState = {
         score: 0, 
         lastTrackedDate: "", 
-        stretchingStatus: "active", 
-        exercisesStatus: "locked",  
+        exercisesStatus: "active",  
+        stretchingStatus: "locked", 
         activePenaltiesChecked: {}, 
         penaltyProgress: {},        
-        checkedStretches: [false, false, false, false],
-        checkedExercises: [false, false, false, false, false, false]
+        checkedExercises: [false, false, false, false, false, false],
+        checkedStretches: [false, false, false, false, false, false, false]
     };
 
     const penaltyThresholds = [
@@ -248,13 +256,13 @@
     ];
 
     window.onload = function() {
-        const saved = localStorage.getItem('khangs_solo_v21_final');
+        const saved = localStorage.getItem('khangs_solo_v22_final');
         if (saved) { 
             try { appState = JSON.parse(saved); } catch(e) { console.error("Reset."); }
         }
         
-        if (!appState.checkedStretches || appState.checkedStretches.length !== 4) appState.checkedStretches = [false, false, false, false];
         if (!appState.checkedExercises || appState.checkedExercises.length !== 6) appState.checkedExercises = [false, false, false, false, false, false];
+        if (!appState.checkedStretches || appState.checkedStretches.length !== 7) appState.checkedStretches = [false, false, false, false, false, false, false];
         if (!appState.activePenaltiesChecked) appState.activePenaltiesChecked = {};
         if (!appState.penaltyProgress) appState.penaltyProgress = {};
         
@@ -270,20 +278,19 @@
         document.getElementById('current-date').innerText = new Date().toLocaleDateString('de-DE', { weekday: 'long', day: 'numeric', month: 'short' });
 
         if (appState.lastTrackedDate !== today) {
-            if (appState.exercisesStatus !== "completed" && appState.lastTrackedDate !== "") {
+            if (appState.stretchingStatus !== "completed" && appState.lastTrackedDate !== "") {
                 appState.score -= 250;
             }
             
             appState.lastTrackedDate = today;
-            appState.stretchingStatus = "active";
-            appState.exercisesStatus = "locked";
-            appState.checkedStretches = [false, false, false, false];
+            appState.exercisesStatus = "active";
+            appState.stretchingStatus = "locked";
             appState.checkedExercises = [false, false, false, false, false, false];
+            appState.checkedStretches = [false, false, false, false, false, false, false];
             
-            // Täglicher Haken-Reset für Strafen
             appState.activePenaltiesChecked = {}; 
             
-            localStorage.setItem('khangs_solo_v21_final', JSON.stringify(appState));
+            localStorage.setItem('khangs_solo_v22_final', JSON.stringify(appState));
         }
     }
 
@@ -306,43 +313,41 @@
         document.getElementById('24h-timer').innerText = `Zeit übrig: ${hours}:${minutes}:${seconds}`;
     }
 
-    function toggleStretchCheck(index) {
-        if (appState.stretchingStatus !== 'active') return;
-        const cb = document.getElementById(`stretch-check-${index}`);
-        appState.checkedStretches[index] = cb.checked;
-        localStorage.setItem('khangs_solo_v21_final', JSON.stringify(appState));
-        checkProgress();
-    }
-
     function toggleExCheck(index) {
         if (appState.exercisesStatus !== 'active') return;
         const cb = document.getElementById(`ex-check-${index}`);
         appState.checkedExercises[index] = cb.checked;
-        localStorage.setItem('khangs_solo_v21_final', JSON.stringify(appState));
+        localStorage.setItem('khangs_solo_v22_final', JSON.stringify(appState));
         checkProgress();
     }
 
-    function completeStretching() {
-        if (appState.stretchingStatus === 'active' && appState.checkedStretches.every(t => t === true)) {
-            // Falls im Minus, gibt es 0 XP, ansonsten normale +50
-            if (appState.score >= 0) {
-                appState.score += 50;
-            }
-            appState.stretchingStatus = "completed";
-            appState.exercisesStatus = "active";
-            localStorage.setItem('khangs_solo_v21_final', JSON.stringify(appState));
-            updateUI();
-        }
+    function toggleStretchCheck(index) {
+        if (appState.stretchingStatus !== 'active') return;
+        const cb = document.getElementById(`stretch-check-${index}`);
+        appState.checkedStretches[index] = cb.checked;
+        localStorage.setItem('khangs_solo_v22_final', JSON.stringify(appState));
+        checkProgress();
     }
 
     function completeExercises() {
         if (appState.exercisesStatus === 'active' && appState.checkedExercises.every(t => t === true)) {
-            // Falls im Minus, gibt es 0 XP, ansonsten normale +100
             if (appState.score >= 0) {
                 appState.score += 100;
             }
             appState.exercisesStatus = "completed";
-            localStorage.setItem('khangs_solo_v21_final', JSON.stringify(appState));
+            appState.stretchingStatus = "active";
+            localStorage.setItem('khangs_solo_v22_final', JSON.stringify(appState));
+            updateUI();
+        }
+    }
+
+    function completeStretching() {
+        if (appState.stretchingStatus === 'active' && appState.checkedStretches.every(t => t === true)) {
+            if (appState.score >= 0) {
+                appState.score += 50;
+            }
+            appState.stretchingStatus = "completed";
+            localStorage.setItem('khangs_solo_v22_final', JSON.stringify(appState));
             updateUI();
         }
     }
@@ -350,47 +355,10 @@
     function checkProgress() {
         const isCurrentlyInMinus = appState.score < 0;
 
-        // 1. STRETCHING LOGIK
-        const stretchBtn = document.getElementById('stretch-btn');
-        const honestyStretch = appState.checkedStretches.every(t => t === true);
-        
-        for (let i = 0; i < 4; i++) {
-            const cb = document.getElementById(`stretch-check-${i}`);
-            const item = document.getElementById(`stretch-item-${i}`);
-            cb.checked = appState.checkedStretches[i];
-            
-            if (appState.checkedStretches[i]) item.classList.add('checked-done');
-            else item.classList.remove('checked-done');
-
-            cb.disabled = (appState.stretchingStatus !== 'active' || appState.checkedStretches[i] === true);
-        }
-
-        if (appState.stretchingStatus === 'completed') {
-            stretchBtn.disabled = true;
-            stretchBtn.innerText = isCurrentlyInMinus ? "Erledigt (0 XP wegen Minus)" : "Stretching erledigt (+50 XP)";
-        } else {
-            if (honestyStretch) {
-                stretchBtn.disabled = false;
-                stretchBtn.innerText = isCurrentlyInMinus ? "Einreichen (Sichert Tag - 0 XP)" : "Stretching einreichen (+50 XP)";
-            } else {
-                stretchBtn.disabled = true;
-                stretchBtn.innerText = "Hake alle Stretches ab!";
-            }
-        }
-
-        // 2. ÜBUNGEN LOGIK
-        const exBlock = document.getElementById('exercises-block');
+        // 1. ÜBUNGEN LOGIK
         const exBtn = document.getElementById('exercises-btn');
         const honestyEx = appState.checkedExercises.every(t => t === true);
-
-        if (appState.exercisesStatus === 'locked') {
-            exBlock.classList.add('disabled-block');
-            exBtn.disabled = true;
-            exBtn.innerText = "Gesperrt – Erst stretchen";
-        } else {
-            exBlock.classList.remove('disabled-block');
-        }
-
+        
         for (let i = 0; i < 6; i++) {
             const cb = document.getElementById(`ex-check-${i}`);
             const item = document.getElementById(`ex-item-${i}`);
@@ -404,14 +372,51 @@
 
         if (appState.exercisesStatus === 'completed') {
             exBtn.disabled = true;
-            exBtn.innerText = "Quest vollständig gelöst! 🎉";
-        } else if (appState.exercisesStatus === 'active') {
+            exBtn.innerText = isCurrentlyInMinus ? "Erledigt (0 XP wegen Minus)" : "Übungen erledigt (+100 XP)";
+        } else {
             if (honestyEx) {
                 exBtn.disabled = false;
-                exBtn.innerText = isCurrentlyInMinus ? "Quest final absenden (0 XP)" : "Quest final absenden (+100 XP)";
+                exBtn.innerText = isCurrentlyInMinus ? "Einreichen (Sichert Tag - 0 XP)" : "Übungen einreichen (+100 XP)";
             } else {
                 exBtn.disabled = true;
                 exBtn.innerText = "Hake alle Übungen ab!";
+            }
+        }
+
+        // 2. STRETCHING LOGIK
+        const stretchBlock = document.getElementById('stretching-block');
+        const stretchBtn = document.getElementById('stretch-btn');
+        const honestyStretch = appState.checkedStretches.every(t => t === true);
+
+        if (appState.stretchingStatus === 'locked') {
+            stretchBlock.classList.add('disabled-block');
+            stretchBtn.disabled = true;
+            stretchBtn.innerText = "Gesperrt – Erst Übungen machen";
+        } else {
+            stretchBlock.classList.remove('disabled-block');
+        }
+
+        for (let i = 0; i < 7; i++) {
+            const cb = document.getElementById(`stretch-check-${i}`);
+            const item = document.getElementById(`stretch-item-${i}`);
+            cb.checked = appState.checkedStretches[i];
+            
+            if (appState.checkedStretches[i]) item.classList.add('checked-done');
+            else item.classList.remove('checked-done');
+
+            cb.disabled = (appState.stretchingStatus !== 'active' || appState.checkedStretches[i] === true);
+        }
+
+        if (appState.stretchingStatus === 'completed') {
+            stretchBtn.disabled = true;
+            stretchBtn.innerText = "Quest vollständig gelöst! 🎉";
+        } else if (appState.stretchingStatus === 'active') {
+            if (honestyStretch) {
+                stretchBtn.disabled = false;
+                stretchBtn.innerText = isCurrentlyInMinus ? "Quest final absenden (0 XP)" : "Quest final absenden (+50 XP)";
+            } else {
+                stretchBtn.disabled = true;
+                stretchBtn.innerText = "Hake alle Stretches ab!";
             }
         }
     }
@@ -498,10 +503,9 @@
             appState.penaltyProgress[level].daysDone += 1;
             appState.activePenaltiesChecked[level] = true;
             
-            // Jedes Abarbeiten bringt dich aktiv zurück
             appState.score += 150;
             
-            localStorage.setItem('khangs_solo_v21_final', JSON.stringify(appState));
+            localStorage.setItem('khangs_solo_v22_final', JSON.stringify(appState));
             updateUI(); 
         }
     }
