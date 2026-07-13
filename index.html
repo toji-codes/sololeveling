@@ -3,109 +3,190 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Khang's Solo Leveling</title>
+    <title>STATUS - SOLO LEVELING</title>
     
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Solo Leveling">
+    <meta name="apple-mobile-web-app-title" content="Status">
     
-    <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5MTIgNTEyIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiI+CiAgICA8ZGVmcz4KICAgICAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnR3JhZCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgICAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwNjA3MGQiIC8+CiAgICAgICAgICAgIDxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjMGYxMDFhIiAvPgogICAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMxNDE1MjQiIC8+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgICAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImFjY2VudEdyYWQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjOGI1Y2Y2IiAvPgogICAgICAgICAgICA8... (Rest des Icons)">
-
     <style>
         :root {
-            --bg-color: #06070d;
-            --card-bg: #0f111a;
-            --border-color: #2c1a4d;
-            --accent-purple: #8b5cf6;
-            --accent-purple-glow: rgba(139, 92, 246, 0.4);
-            --accent-blue: #00f0ff;
-            --accent-red: #ff2a5f;
-            --text-main: #f3f4f6;
-            --text-muted: #6b7280;
+            --bg-color: #03080f;
+            --card-bg: rgba(6, 14, 23, 0.85);
+            --border-color: rgba(0, 162, 255, 0.25);
+            --border-glow: rgba(0, 162, 255, 0.2);
+            --accent-ice: #00a2ff;
+            --accent-ice-glow: rgba(0, 162, 255, 0.85);
+            --accent-ice-deep: rgba(0, 162, 255, 0.35);
+            --accent-red: #ff3366;
+            --accent-red-glow: rgba(255, 51, 102, 0.8);
+            --text-main: #ffffff;
+            --text-ice: #e6f7ff;
+            --text-muted: #4a6578;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+        
         body {
-            font-family: 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Segoe UI', Roboto, -apple-system, sans-serif;
             background-color: var(--bg-color);
-            background-image: radial-gradient(at 0% 0%, rgba(31, 24, 66, 0.3) 0, transparent 50%);
-            color: var(--text-main);
+            background-image: 
+                linear-gradient(rgba(0, 162, 255, 0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 162, 255, 0.015) 1px, transparent 1px),
+                radial-gradient(at 50% 15%, #0a1b2e 0%, #03080f 75%);
+            background-size: 30px 30px, 30px 30px, 100% 100%;
+            color: var(--text-ice);
             padding: 15px 10px;
             display: flex;
             justify-content: center;
             min-height: 100vh;
+            letter-spacing: 0.5px;
         }
 
         .container { width: 100%; max-width: 480px; display: flex; flex-direction: column; gap: 20px; }
         
         .card {
             background: var(--card-bg);
-            border-radius: 8px;
+            border-radius: 2px;
             padding: 22px;
-            border: 2px solid var(--border-color);
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 0 30px var(--border-glow), inset 0 0 15px rgba(0, 162, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             position: relative;
-            overflow: hidden;
         }
 
-        .card::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px;
-            background: linear-gradient(90deg, transparent, var(--accent-purple), var(--accent-blue), transparent);
+        /* Subtile Ecken wie im Interface */
+        .card::before, .card::after {
+            content: ''; position: absolute; width: 10px; height: 10px; border-color: rgba(255, 255, 255, 0.6); border-style: solid;
+            box-shadow: 0 0 8px var(--accent-ice-glow); opacity: 0.8;
+        }
+        .card::before { top: 4px; left: 4px; border-width: 1.5px 0 0 1.5px; }
+        .card::after { bottom: 4px; right: 4px; border-width: 0 1.5px 1.5px 0; }
+
+        .system-title-box {
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            padding: 5px 30px;
+            text-align: center;
+            max-width: 200px;
+            margin: 0 auto 20px auto;
+            box-shadow: 0 0 12px rgba(0, 162, 255, 0.3), inset 0 0 8px rgba(0, 162, 255, 0.2);
+            background: rgba(4, 12, 22, 0.6);
         }
 
-        h1 { font-size: 1.8rem; text-align: center; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; text-shadow: 0 0 10px var(--accent-purple-glow); }
-        h2 { font-size: 1.15rem; margin-bottom: 12px; color: var(--accent-blue); text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid rgba(139, 92, 246, 0.2); padding-bottom: 4px; }
+        h1 { 
+            font-size: 1.6rem; 
+            font-weight: 400; 
+            letter-spacing: 5px; 
+            text-transform: uppercase; 
+            color: #ffffff;
+            text-shadow: 0 0 8px #ffffff, 0 0 15px var(--accent-ice-glow); 
+        }
+
+        h2 { 
+            font-size: 1rem; 
+            margin-bottom: 15px; 
+            color: #ffffff; 
+            text-transform: uppercase; 
+            letter-spacing: 1.5px; 
+            border-bottom: 1px solid rgba(0, 162, 255, 0.2); 
+            padding-bottom: 6px;
+            text-shadow: 0 0 6px var(--accent-ice-glow);
+        }
         
-        .header-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
-        .date-sub { color: var(--accent-purple); letter-spacing: 2px; }
-        .timer-sub { color: var(--accent-red); font-family: monospace; }
+        .header-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
+        .date-sub { color: var(--text-ice); text-shadow: 0 0 6px var(--accent-ice-glow); }
+        .timer-sub { color: var(--accent-red); font-family: monospace; text-shadow: 0 0 6px var(--accent-red-glow); font-size: 0.8rem; }
 
-        .scoreboard { text-align: center; padding: 16px; background: #141524; border-radius: 6px; border: 1px solid rgba(139, 92, 246, 0.3); }
-        .score-val { font-size: 3.2rem; font-weight: 900; color: var(--accent-blue); font-family: monospace; text-shadow: 0 0 12px rgba(0, 240, 255, 0.6); }
-        .score-val.neg { color: var(--accent-red); text-shadow: 0 0 12px rgba(255, 42, 95, 0.6); }
+        .scoreboard { 
+            text-align: center; 
+            padding: 14px; 
+            background: rgba(4, 14, 26, 0.7); 
+            border-radius: 2px; 
+            border: 1px solid rgba(0, 162, 255, 0.2); 
+            margin-bottom: 5px;
+            box-shadow: inset 0 0 10px rgba(0, 162, 255, 0.1);
+        }
+        .score-val { 
+            font-size: 3.2rem; 
+            font-weight: 300; 
+            color: #ffffff; 
+            font-family: monospace; 
+            text-shadow: 0 0 8px #ffffff, 0 0 20px var(--accent-ice-glow), 0 0 35px rgba(0, 162, 255, 0.3); 
+        }
+        .score-val.neg { 
+            color: var(--accent-red); 
+            text-shadow: 0 0 8px var(--accent-red-glow), 0 0 20px rgba(255, 51, 102, 0.4); 
+        }
 
-        .section-block { margin-top: 20px; transition: opacity 0.2s; }
-        .section-block.disabled-block { opacity: 0.25; pointer-events: none; }
+        .section-block { margin-top: 25px; transition: opacity 0.2s; }
+        .section-block.disabled-block { opacity: 0.12; pointer-events: none; }
 
-        .task-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
+        .task-list { display: flex; flex-direction: column; gap: 7px; margin-bottom: 14px; }
         .task-item {
-            background: #141724; padding: 12px 14px; border-radius: 6px;
-            border: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; gap: 12px;
+            background: rgba(5, 16, 28, 0.5); padding: 12px 14px; border-radius: 2px;
+            border: 1px solid rgba(0, 162, 255, 0.1); display: flex; align-items: center; gap: 12px;
             cursor: pointer; user-select: none; transition: all 0.2s;
         }
+        .task-item:hover {
+            border-color: rgba(0, 162, 255, 0.4);
+            background: rgba(7, 22, 40, 0.7);
+        }
         .task-item input[type="checkbox"] {
-            width: 20px; height: 20px; accent-color: var(--accent-blue); cursor: pointer;
+            width: 18px; height: 18px; accent-color: var(--accent-ice); cursor: pointer;
+            box-shadow: 0 0 4px rgba(0, 162, 255, 0.3);
         }
         .task-item input[type="checkbox"]:disabled { cursor: not-allowed; }
-        .task-item span { font-size: 0.95rem; font-weight: 600; flex-grow: 1; transition: all 0.2s; }
+        .task-item span { font-size: 0.9rem; font-weight: 400; color: #ffffff; flex-grow: 1; transition: all 0.2s; text-shadow: 0 0 4px rgba(0, 162, 255, 0.4); }
         
-        .task-item.checked-done { background: #0b0d14; border-color: rgba(139, 92, 246, 0.1); }
-        .task-item.checked-done span { text-decoration: line-through; color: var(--text-muted); opacity: 0.6; }
+        .task-item.checked-done { background: rgba(0, 162, 255, 0.03); border-color: rgba(0, 162, 255, 0.15); }
+        .task-item.checked-done span { text-decoration: line-through; color: var(--text-muted); opacity: 0.4; text-shadow: none; }
 
         .action-btn {
-            width: 100%; padding: 14px; border-radius: 6px; border: 1px solid var(--accent-purple);
-            background: linear-gradient(135deg, #4c1d95, #7c3aed); color: white; font-size: 0.95rem;
-            font-weight: 800; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; transition: all 0.2s; margin-bottom: 5px;
+            width: 100%; padding: 13px; border-radius: 2px; border: 1px solid rgba(0, 162, 255, 0.5);
+            background: rgba(5, 25, 45, 0.6); color: #ffffff; font-size: 0.85rem;
+            font-weight: 600; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; transition: all 0.2s; margin-bottom: 5px;
+            box-shadow: inset 0 0 8px rgba(0, 162, 255, 0.2);
+            text-shadow: 0 0 4px #ffffff;
         }
-        .action-btn:disabled { background: #1c1d26; border-color: #2a2b36; color: var(--text-muted); cursor: not-allowed; box-shadow: none; }
+        .action-btn:hover:not(:disabled) {
+            background: rgba(0, 162, 255, 0.15);
+            border-color: var(--accent-ice);
+            box-shadow: 0 0 15px rgba(0, 162, 255, 0.3), inset 0 0 10px rgba(0, 162, 255, 0.1);
+            text-shadow: 0 0 6px #ffffff, 0 0 12px var(--accent-ice-glow);
+        }
+        .action-btn:disabled { background: rgba(4, 10, 18, 0.8); border-color: rgba(255,255,255,0.03); color: var(--text-muted); cursor: not-allowed; box-shadow: none; text-shadow: none; }
 
         .penalty-tracker {
-            background: rgba(255, 42, 95, 0.1); border: 1px solid rgba(255, 42, 95, 0.3);
-            border-radius: 6px; padding: 12px; margin-top: 15px; text-align: center; font-size: 0.9rem;
+            background: rgba(255, 51, 102, 0.04); border: 1px solid rgba(255, 51, 102, 0.25);
+            border-radius: 2px; padding: 11px; margin-top: 18px; text-align: center; font-size: 0.85rem;
+            text-transform: uppercase; letter-spacing: 1px;
         }
-        .penalty-tracker span { color: var(--accent-red); font-weight: bold; }
+        .penalty-tracker span { color: var(--accent-red); font-weight: bold; text-shadow: 0 0 6px var(--accent-red-glow); }
 
-        .table-wrapper { overflow-x: auto; margin-top: 10px; max-height: 420px; border: 1px solid rgba(255,255,255,0.05); border-radius: 4px; }
-        table { width: 100%; border-collapse: collapse; font-size: 0.85rem; text-align: left; }
-        th, td { padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); vertical-align: middle; }
-        th { color: var(--accent-red); background: #0b0d14; text-transform: uppercase; font-size: 0.72rem; letter-spacing: 1px; }
-        td { background: #11131f; }
+        .table-wrapper { overflow-x: auto; margin-top: 10px; max-height: 420px; border: 1px solid rgba(0, 162, 255, 0.15); border-radius: 2px; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.8rem; text-align: left; }
+        th, td { padding: 11px; border-bottom: 1px solid rgba(0, 162, 255, 0.08); vertical-align: middle; }
+        th { color: var(--accent-red); background: rgba(16, 4, 10, 0.9); text-transform: uppercase; font-size: 0.7rem; letter-spacing: 1px; text-shadow: 0 0 5px var(--accent-red-glow); }
+        td { background: rgba(4, 10, 18, 0.6); color: #d0e5f5; }
 
-        .penalty-row-active { background: rgba(255, 42, 95, 0.15) !important; font-weight: bold; color: var(--accent-red); }
-        .penalty-row-progress { background: rgba(0, 240, 255, 0.08) !important; font-weight: bold; color: var(--accent-blue); }
-        .penalty-cb { width: 18px; height: 18px; accent-color: var(--accent-red); cursor: pointer; }
+        .penalty-row-active { 
+            background: rgba(255, 51, 102, 0.12) !important; 
+            color: var(--accent-red); 
+            font-weight: bold;
+        }
+        .penalty-row-active td { color: var(--accent-red); text-shadow: 0 0 5px rgba(255, 51, 102, 0.4); }
+        
+        .penalty-row-progress { 
+            background: rgba(0, 162, 255, 0.08) !important; 
+            color: #ffffff; 
+            font-weight: bold;
+        }
+        .penalty-row-progress td { color: #ffffff; text-shadow: 0 0 6px var(--accent-ice-glow); }
+
+        .penalty-cb { width: 16px; height: 16px; accent-color: var(--accent-red); cursor: pointer; }
         .penalty-cb:disabled { cursor: not-allowed; }
-        .status-cell { text-align: center; width: 75px; font-size: 0.8rem; }
+        .status-cell { text-align: center; width: 75px; font-size: 0.75rem; }
     </style>
 </head>
 <body>
@@ -115,35 +196,38 @@
     <div class="card">
         <div class="header-meta">
             <div class="date-sub" id="current-date">-</div>
-            <div class="timer-sub" id="24h-timer">Zeit übrig: 00:00:00</div>
+            <div class="timer-sub" id="24h-timer">DAUER: 00:00:00</div>
         </div>
-        <h1>Khang's Solo Leveling</h1>
-        <br>
+        
+        <div class="system-title-box">
+            <h1>STATUS</h1>
+        </div>
+        
         <div class="scoreboard">
-            <div style="font-size: 0.7rem; color: var(--accent-purple); text-transform: uppercase; letter-spacing: 2px;">Aktueller Score</div>
+            <div style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 3px;">Konto-XP-Kontrolle</div>
             <div class="score-val" id="score-display">0</div>
         </div>
 
         <!-- ÜBUNGEN CHECKLISTE -->
         <div class="section-block" id="exercises-block">
-            <h2>Übungen (Wert: +100 XP)</h2>
+            <h2>Aktive Übungen (Wert: +100 XP)</h2>
             <div class="task-list">
                 <label class="task-item" id="ex-item-0">
                     <input type="checkbox" id="ex-check-0" onchange="toggleExCheck(0)">
-                    <span>1xmin Plank</span>
+                    <span>1min Plank</span>
                 </label>
                 <label class="task-item" id="ex-item-1">
                     <input type="checkbox" id="ex-check-1" onchange="toggleExCheck(1)">
-                    <span>1xmin Side Plank</span>
+                    <span>1min Side Plank</span>
                 </label>
                 <label class="task-item" id="ex-item-2">
                     <input type="checkbox" id="ex-check-2" onchange="toggleExCheck(2)">
-                    <span>1xmin Reverse Plank</span>
-                </label>             
+                    <span>1min Reverse Plank</span>
+                </label>
                 <label class="task-item" id="ex-item-3">
                     <input type="checkbox" id="ex-check-3" onchange="toggleExCheck(3)">
                     <span>30sec Dead Hang</span>
-                </label>                        
+                </label>
                 <label class="task-item" id="ex-item-4">
                     <input type="checkbox" id="ex-check-4" onchange="toggleExCheck(4)">
                     <span>10 Cat Cow</span>
@@ -158,7 +242,7 @@
                 </label>
                 <label class="task-item" id="ex-item-7">
                     <input type="checkbox" id="ex-check-7" onchange="toggleExCheck(7)">
-                    <span>10x5sec Isometric Rot. Cuff Hold</span>
+                    <span>10x5sec Isometric Rotator Cuff Hold</span>
                 </label>
             </div>
             <button type="button" class="action-btn" id="exercises-btn" onclick="completeExercises()" disabled>Übungen einreichen</button>
@@ -166,7 +250,7 @@
 
         <!-- STRETCHING CHECKLISTE -->
         <div class="section-block" id="stretching-block">
-            <h2>Stretching (Wert: +50 XP)</h2>
+            <h2>Stretching-Routine (Wert: +50 XP)</h2>
             <div class="task-list">
                 <label class="task-item" id="stretch-item-0">
                     <input type="checkbox" id="stretch-check-0" onchange="toggleStretchCheck(0)">
@@ -178,11 +262,11 @@
                 </label>
                 <label class="task-item" id="stretch-item-2">
                     <input type="checkbox" id="stretch-check-2" onchange="toggleStretchCheck(2)">
-                    <span>2x1min per Side Cossack Squat</span>
+                    <span>2x1min Cossack Squat</span>
                 </label>
                 <label class="task-item" id="stretch-item-3">
                     <input type="checkbox" id="stretch-check-3" onchange="toggleStretchCheck(3)">
-                    <span>1min Sciatica Flossing</span>
+                    <span>1min Sciatic Flossing</span>
                 </label>
                 <label class="task-item" id="stretch-item-4">
                     <input type="checkbox" id="stretch-check-4" onchange="toggleStretchCheck(4)">
@@ -190,48 +274,48 @@
                 </label>
                 <label class="task-item" id="stretch-item-5">
                     <input type="checkbox" id="stretch-check-5" onchange="toggleStretchCheck(5)">
-                    <span>2x1min per Hip Flexor Stretch</span>
+                    <span>2x1min Hip Flexor Stretch</span>
                 </label>
                 <label class="task-item" id="stretch-item-6">
                     <input type="checkbox" id="stretch-check-6" onchange="toggleStretchCheck(6)">
                     <span>2x1min Pec Minor Stretch</span>
                 </label>
             </div>
-            <button type="button" class="action-btn" id="stretch-btn" onclick="completeStretching()" disabled>Quest final absenden</button>
+            <button type="button" class="action-btn" id="stretch-btn" onclick="completeStretching()" disabled>Quest abschließen</button>
         </div>
 
         <div class="penalty-tracker" id="current-penalty-display">
-            Status: <span>Keine Strafen aktiv</span>
+            System-Meldung: <span>-</span>
         </div>
     </div>
 
     <!-- STRAFSTUFEN CARD -->
     <div class="card">
-        <h2>🚨 Strafstufen & Abbau</h2>
-        <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 10px; line-height: 1.3;">
-            Abgehakte Strafen erhöhen deinen Score sofort um <b>+150 XP</b>, um dich aus dem Minus zu holen. Wenn du im Minus bist, bringen Dailies 0 XP, sichern dich aber vor der Verpassens-Strafe!
+        <h2>🚨 Strafstufen-Protokoll</h2>
+        <div style="font-size: 0.7rem; color: var(--text-muted); margin-bottom: 10px; line-height: 1.4;">
+            Strafen bringen sofort <b>+150 XP</b> zum Wiederaufbau. Befindet sich der Score unter 0, generieren tägliche Quests temporär 0 XP, schützen aber vor dem automatischen Strafabzug.
         </div>
         <div class="table-wrapper">
             <table>
                 <thead>
                     <tr>
                         <th>Stufe</th>
-                        <th>Bedingung</th>
-                        <th>Strafe</th>
-                        <th style="text-align: center;">Erledigt</th>
+                        <th>Grenze</th>
+                        <th>Sanktion</th>
+                        <th style="text-align: center;">Status</th>
                     </tr>
                 </thead>
                 <tbody id="penalty-table-body">
-                    <tr id="p-row-1"><td>Stufe 1</td><td>&lt; 0 KP</td><td>100 Burpees Zusatz</td><td class="status-cell" id="p-cell-1">-</td></tr>
-                    <tr id="p-row-2"><td>Stufe 2</td><td>&lt; -150 KP</td><td>Kaltduschen Pflicht (3 Tage)</td><td class="status-cell" id="p-cell-2">-</td></tr>
-                    <tr id="p-row-3"><td>Stufe 3</td><td>&lt; -300 KP</td><td>Social Media Sperre (24h)</td><td class="status-cell" id="p-cell-3">-</td></tr>
-                    <tr id="p-row-4"><td>Stufe 4</td><td>&lt; -500 KP</td><td>Metcon Workout Extra</td><td class="status-cell" id="p-cell-4">-</td></tr>
-                    <tr id="p-row-5"><td>Stufe 5</td><td>&lt; -700 KP</td><td>Intervallfasten 16/8 (3 Tage)</td><td class="status-cell" id="p-cell-5">-</td></tr>
-                    <tr id="p-row-6"><td>Stufe 6</td><td>&lt; -900 KP</td><td>Kaltduschen (7 Tage) + 50 Burpees/Tag</td><td class="status-cell" id="p-cell-6">-</td></tr>
-                    <tr id="p-row-7"><td>Stufe 7</td><td>&lt; -1200 KP</td><td>Social Media Sperre (3 Tage)</td><td class="status-cell" id="p-cell-7">-</td></tr>
-                    <tr id="p-row-8"><td>Stufe 8</td><td>&lt; -1500 KP</td><td>Double Workout Day (Kraft + Ausdauer)</td><td class="status-cell" id="p-cell-8">-</td></tr>
-                    <tr id="p-row-9"><td>Stufe 9</td><td>&lt; -2000 KP</td><td>Vollständiges Fasten (24h)</td><td class="status-cell" id="p-cell-9">-</td></tr>
-                    <tr id="p-row-10"><td>Stufe 10</td><td>&lt; -2500 KP</td><td>48h Fasten + 7 Tage Social Media Bann</td><td class="status-cell" id="p-cell-10">-</td></tr>
+                    <tr id="p-row-1"><td>Stufe 1</td><td>&lt; 0</td><td>100 Burpees Zusatz</td><td class="status-cell" id="p-cell-1">-</td></tr>
+                    <tr id="p-row-2"><td>Stufe 2</td><td>&lt; -150</td><td>Kaltduschen Pflicht (3 Tage)</td><td class="status-cell" id="p-cell-2">-</td></tr>
+                    <tr id="p-row-3"><td>Stufe 3</td><td>&lt; -300</td><td>Social Media Sperre (24h)</td><td class="status-cell" id="p-cell-3">-</td></tr>
+                    <tr id="p-row-4"><td>Stufe 4</td><td>&lt; -500</td><td>Metcon Workout Extra</td><td class="status-cell" id="p-cell-4">-</td></tr>
+                    <tr id="p-row-5"><td>Stufe 5</td><td>&lt; -700</td><td>Intervallfasten 16/8 (3 Tage)</td><td class="status-cell" id="p-cell-5">-</td></tr>
+                    <tr id="p-row-6"><td>Stufe 6</td><td>&lt; -900</td><td>Kaltduschen (7 Tage) + 50 Burpees/Tag</td><td class="status-cell" id="p-cell-6">-</td></tr>
+                    <tr id="p-row-7"><td>Stufe 7</td><td>&lt; -1200</td><td>Social Media Sperre (3 Tage)</td><td class="status-cell" id="p-cell-7">-</td></tr>
+                    <tr id="p-row-8"><td>Stufe 8</td><td>&lt; -1500</td><td>Double Workout Day (Kraft + Ausdauer)</td><td class="status-cell" id="p-cell-8">-</td></tr>
+                    <tr id="p-row-9"><td>Stufe 9</td><td>&lt; -2000</td><td>Vollständiges Fasten (24h)</td><td class="status-cell" id="p-cell-9">-</td></tr>
+                    <tr id="p-row-10"><td>Stufe 10</td><td>&lt; -2500</td><td>48h Fasten + 7 Tage Social Media Bann</td><td class="status-cell" id="p-cell-10">-</td></tr>
                 </tbody>
             </table>
         </div>
@@ -246,30 +330,30 @@
         stretchingStatus: "locked", 
         activePenaltiesChecked: {}, 
         penaltyProgress: {},        
-        checkedExercises: [false, false, false, false, false, false],
+        checkedExercises: [false, false, false, false, false, false, false, false],
         checkedStretches: [false, false, false, false, false, false, false]
     };
 
     const penaltyThresholds = [
-        { level: 10, limit: -2500, days: 7, text: "Stufe 10: 48h Fasten & 7 Tage Social Media Bann" },
-        { level: 9, limit: -2000, days: 1, text: "Stufe 9: 24h Fasten" },
-        { level: 8, limit: -1500, days: 1, text: "Stufe 8: Double Workout Day" },
-        { level: 7, limit: -1200, days: 3, text: "Stufe 7: 3 Tage Social Media Sperre" },
-        { level: 6, limit: -900, days: 7, text: "Stufe 6: 7 Tage Kaltduschen & Burpees" },
-        { level: 5, limit: -700, days: 3, text: "Stufe 5: 3 Tage Intervallfasten" },
-        { level: 4, limit: -500, days: 1, text: "Stufe 4: Metcon Workout Extra" },
-        { level: 3, limit: -300, days: 1, text: "Stufe 3: 24h Social Media Sperre" },
-        { level: 2, limit: -150, days: 3, text: "Stufe 2: 3 Tage Kaltduschen" },
-        { level: 1, limit: 0, days: 1, text: "Stufe 1: 100 Burpees" }
+        { level: 10, limit: -2500, days: 7, text: "Lvl 10: 48h Fasten & 7 Tage Social Media" },
+        { level: 9, limit: -2000, days: 1, text: "Lvl 9: 24h Fasten" },
+        { level: 8, limit: -1500, days: 1, text: "Lvl 8: Double Workout Day" },
+        { level: 7, limit: -1200, days: 3, text: "Lvl 7: 3 Tage Social Media Sperre" },
+        { level: 6, limit: -900, days: 7, text: "Lvl 6: 7 Tage Kaltduschen & Burpees" },
+        { level: 5, limit: -700, days: 3, text: "Lvl 5: 3 Tage Intervallfasten" },
+        { level: 4, limit: -500, days: 1, text: "Lvl 4: Metcon Workout Extra" },
+        { level: 3, limit: -300, days: 1, text: "Lvl 3: 24h Social Media Sperre" },
+        { level: 2, limit: -150, days: 3, text: "Lvl 2: 3 Tage Kaltduschen" },
+        { level: 1, limit: 0, days: 1, text: "Lvl 1: 100 Burpees" }
     ];
 
     window.onload = function() {
-        const saved = localStorage.getItem('khangs_solo_v22_final');
+        const saved = localStorage.getItem('khangs_solo_v23_dark');
         if (saved) { 
             try { appState = JSON.parse(saved); } catch(e) { console.error("Reset."); }
         }
         
-        if (!appState.checkedExercises || appState.checkedExercises.length !== 6) appState.checkedExercises = [false, false, false, false, false, false];
+        if (!appState.checkedExercises || appState.checkedExercises.length !== 8) appState.checkedExercises = [false, false, false, false, false, false, false, false];
         if (!appState.checkedStretches || appState.checkedStretches.length !== 7) appState.checkedStretches = [false, false, false, false, false, false, false];
         if (!appState.activePenaltiesChecked) appState.activePenaltiesChecked = {};
         if (!appState.penaltyProgress) appState.penaltyProgress = {};
@@ -293,12 +377,11 @@
             appState.lastTrackedDate = today;
             appState.exercisesStatus = "active";
             appState.stretchingStatus = "locked";
-            appState.checkedExercises = [false, false, false, false, false, false];
+            appState.checkedExercises = [false, false, false, false, false, false, false, false];
             appState.checkedStretches = [false, false, false, false, false, false, false];
-            
             appState.activePenaltiesChecked = {}; 
             
-            localStorage.setItem('khangs_solo_v22_final', JSON.stringify(appState));
+            localStorage.setItem('khangs_solo_v23_dark', JSON.stringify(appState));
         }
     }
 
@@ -318,14 +401,14 @@
         const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
         const seconds = Math.floor((diff % (1000 * 60)) / 1000).toString().padStart(2, '0');
 
-        document.getElementById('24h-timer').innerText = `Zeit übrig: ${hours}:${minutes}:${seconds}`;
+        document.getElementById('24h-timer').innerText = `DAUER: ${hours}:${minutes}:${seconds}`;
     }
 
     function toggleExCheck(index) {
         if (appState.exercisesStatus !== 'active') return;
         const cb = document.getElementById(`ex-check-${index}`);
         appState.checkedExercises[index] = cb.checked;
-        localStorage.setItem('khangs_solo_v22_final', JSON.stringify(appState));
+        localStorage.setItem('khangs_solo_v23_dark', JSON.stringify(appState));
         checkProgress();
     }
 
@@ -333,29 +416,25 @@
         if (appState.stretchingStatus !== 'active') return;
         const cb = document.getElementById(`stretch-check-${index}`);
         appState.checkedStretches[index] = cb.checked;
-        localStorage.setItem('khangs_solo_v22_final', JSON.stringify(appState));
+        localStorage.setItem('khangs_solo_v23_dark', JSON.stringify(appState));
         checkProgress();
     }
 
     function completeExercises() {
         if (appState.exercisesStatus === 'active' && appState.checkedExercises.every(t => t === true)) {
-            if (appState.score >= 0) {
-                appState.score += 100;
-            }
+            if (appState.score >= 0) { appState.score += 100; }
             appState.exercisesStatus = "completed";
             appState.stretchingStatus = "active";
-            localStorage.setItem('khangs_solo_v22_final', JSON.stringify(appState));
+            localStorage.setItem('khangs_solo_v23_dark', JSON.stringify(appState));
             updateUI();
         }
     }
 
     function completeStretching() {
         if (appState.stretchingStatus === 'active' && appState.checkedStretches.every(t => t === true)) {
-            if (appState.score >= 0) {
-                appState.score += 50;
-            }
+            if (appState.score >= 0) { appState.score += 50; }
             appState.stretchingStatus = "completed";
-            localStorage.setItem('khangs_solo_v22_final', JSON.stringify(appState));
+            localStorage.setItem('khangs_solo_v23_dark', JSON.stringify(appState));
             updateUI();
         }
     }
@@ -363,11 +442,10 @@
     function checkProgress() {
         const isCurrentlyInMinus = appState.score < 0;
 
-        // 1. ÜBUNGEN LOGIK
         const exBtn = document.getElementById('exercises-btn');
         const honestyEx = appState.checkedExercises.every(t => t === true);
         
-        for (let i = 0; i < 6; i++) {
+        for (let i = 0; i < 8; i++) {
             const cb = document.getElementById(`ex-check-${i}`);
             const item = document.getElementById(`ex-item-${i}`);
             cb.checked = appState.checkedExercises[i];
@@ -380,18 +458,17 @@
 
         if (appState.exercisesStatus === 'completed') {
             exBtn.disabled = true;
-            exBtn.innerText = isCurrentlyInMinus ? "Erledigt (0 XP wegen Minus)" : "Übungen erledigt (+100 XP)";
+            exBtn.innerText = isCurrentlyInMinus ? "Erledigt (0 XP / System blockiert)" : "Übungen absolviert (+100 XP)";
         } else {
             if (honestyEx) {
                 exBtn.disabled = false;
-                exBtn.innerText = isCurrentlyInMinus ? "Einreichen (Sichert Tag - 0 XP)" : "Übungen einreichen (+100 XP)";
+                exBtn.innerText = isCurrentlyInMinus ? "Einreichen (0 XP / Schutz aktiv)" : "Übungen einreichen (+100 XP)";
             } else {
                 exBtn.disabled = true;
-                exBtn.innerText = "Hake alle Übungen ab!";
+                exBtn.innerText = "Alle Übungen ausführen";
             }
         }
 
-        // 2. STRETCHING LOGIK
         const stretchBlock = document.getElementById('stretching-block');
         const stretchBtn = document.getElementById('stretch-btn');
         const honestyStretch = appState.checkedStretches.every(t => t === true);
@@ -399,7 +476,7 @@
         if (appState.stretchingStatus === 'locked') {
             stretchBlock.classList.add('disabled-block');
             stretchBtn.disabled = true;
-            stretchBtn.innerText = "Gesperrt – Erst Übungen machen";
+            stretchBtn.innerText = "Gesperrt – Erst Übungen abschließen";
         } else {
             stretchBlock.classList.remove('disabled-block');
         }
@@ -417,14 +494,14 @@
 
         if (appState.stretchingStatus === 'completed') {
             stretchBtn.disabled = true;
-            stretchBtn.innerText = "Quest vollständig gelöst! 🎉";
+            stretchBtn.innerText = "Tages-Quest erfolgreich beendet! 🎉";
         } else if (appState.stretchingStatus === 'active') {
             if (honestyStretch) {
                 stretchBtn.disabled = false;
                 stretchBtn.innerText = isCurrentlyInMinus ? "Quest final absenden (0 XP)" : "Quest final absenden (+50 XP)";
             } else {
                 stretchBtn.disabled = true;
-                stretchBtn.innerText = "Hake alle Stretches ab!";
+                stretchBtn.innerText = "Gesamte Routine abarbeiten";
             }
         }
     }
@@ -454,11 +531,11 @@
 
         if (highestActiveLevel > 0) {
             const currentActive = penaltyThresholds.find(t => t.level === highestActiveLevel);
-            penaltyTextSpan.innerText = `AKTIV: ${currentActive.text}`;
-            document.getElementById('current-penalty-display').style.background = "rgba(255, 42, 95, 0.25)";
+            penaltyTextSpan.innerText = `WARNUNG: ${currentActive.text}`;
+            document.getElementById('current-penalty-display').style.background = "rgba(255, 51, 102, 0.12)";
         } else {
-            penaltyTextSpan.innerText = "Keine Strafen aktiv (Sicherer Bereich)";
-            document.getElementById('current-penalty-display').style.background = "rgba(139, 92, 246, 0.1)";
+            penaltyTextSpan.innerText = "Sicherer Bereich (Score stabil)";
+            document.getElementById('current-penalty-display').style.background = "rgba(0, 162, 255, 0.05)";
         }
 
         for (let i = 1; i <= 10; i++) {
@@ -482,16 +559,16 @@
                 
                 if (appState.activePenaltiesChecked[i]) {
                     if (targetThreshold.days > 1) {
-                        cell.innerHTML = `<span style="color: var(--accent-blue);">Tag ${daysDone}/${targetThreshold.days} ✔</span>`;
+                        cell.innerHTML = `<span style="color: #ffffff; text-shadow: 0 0 5px var(--accent-ice-glow);">Tag ${daysDone}/${targetThreshold.days} ✔</span>`;
                     } else {
-                        cell.innerHTML = `<span style="color: var(--accent-blue);">Erledigt ✔</span>`;
+                        cell.innerHTML = `<span style="color: #ffffff; text-shadow: 0 0 5px var(--accent-ice-glow);">Erfüllt ✔</span>`;
                     }
                 } else {
                     let labelText = "Abhaken";
                     if (targetThreshold.days > 1) {
                         labelText = `Tag ${daysDone + 1} ablh.`;
                     }
-                    cell.innerHTML = `<input type="checkbox" class="penalty-cb" id="penalty-check-${i}" onchange="togglePenaltyCheck(${i})"> <span style="font-size:0.7rem; display:block;">${labelText}</span>`;
+                    cell.innerHTML = `<input type="checkbox" class="penalty-cb" id="penalty-check-${i}" onchange="togglePenaltyCheck(${i})"> <span style="font-size:0.65rem; display:block; color:var(--text-muted);">${labelText}</span>`;
                 }
             } else {
                 cell.innerText = "-";
@@ -513,7 +590,7 @@
             
             appState.score += 150;
             
-            localStorage.setItem('khangs_solo_v22_final', JSON.stringify(appState));
+            localStorage.setItem('khangs_solo_v23_dark', JSON.stringify(appState));
             updateUI(); 
         }
     }
